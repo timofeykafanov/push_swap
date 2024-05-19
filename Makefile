@@ -47,11 +47,11 @@ bonus	: $(NAME_B)
 
 $(NAME_B)	: ${OBJS_B}
 #		$(MAKE) -C ${LIBDIR} all
-		$(CC) -o $@ $^ $(LINKFLAGS) -L. ${LIBFT}
+		$(CC) ${CFLAGS} -o $@ $^ $(LINKFLAGS) -L. ${LIBFT}
 
 $(NAME)	: ${OBJS}
 #		$(MAKE) -C ${LIBDIR} all
-		$(CC) -o $@ $^ $(LINKFLAGS) -L. ${LIBFT}
+		$(CC) ${CFLAGS} -o $@ $^ $(LINKFLAGS) -L. ${LIBFT}
 
 ${OBJSDIR}/%.o	: %.c
 		@mkdir -p $(dir $@)
