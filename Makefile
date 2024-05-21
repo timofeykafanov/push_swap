@@ -1,24 +1,21 @@
-###############################################################################
-######                             PROPERTIES                            ######
-###############################################################################
+################################################################################
+######                             PROPERTIES                             ######
+################################################################################
 
 CC			= cc
 RM			= rm -rf
 CFLAGS		= -Wall -Wextra -Werror -MD -MP -g
-#LINKFLAGS	= -lncursesw
 MAKEFLAGS	= -j$(nproc) --no-print-directory
 
 NAME		= push_swap
 NAME_B		= checker_bonus
 
-#SRCSDIR		= srcs
 SRCS		= \
 			push_swap.c \
 			swap.c \
 			push.c \
 			rotate.c
 
-#SRCSDIR_B	= srcs_bonus
 SRCS_B		= \
 			checker.c \
 
@@ -30,28 +27,28 @@ OBJSDIR_B	= objs_bonus
 OBJS_B		= $(addprefix $(OBJSDIR_B)/, $(SRCS_B:.c=.o))
 DEPS_B		= $(addprefix $(OBJSDIR_B)/, $(SRCS_B:.c=.d))
 
-###############################################################################
-######                               LIBFT                               ######
-###############################################################################
+################################################################################
+######                               LIBFT                                ######
+################################################################################
 
-#LIBDIR		= ./libft
-#LIBFT		= ${LIBDIR}/libft.a
+LIBDIR		= ./libft
+LIBFT		= ${LIBDIR}/libft.a
 
-###############################################################################
-######                               RULES                               ######
-###############################################################################
+################################################################################
+######                               RULES                                ######
+################################################################################
 
 all		: $(NAME)
 
 bonus	: $(NAME_B)
 
-$(NAME_B)	: ${OBJS_B}
-#		$(MAKE) -C ${LIBDIR} all
-		$(CC) ${CFLAGS} -o $@ $^ $(LINKFLAGS) -L. ${LIBFT}
-
 $(NAME)	: ${OBJS}
-#		$(MAKE) -C ${LIBDIR} all
-		$(CC) ${CFLAGS} -o $@ $^ $(LINKFLAGS) -L. ${LIBFT}
+		$(MAKE) -C ${LIBDIR} all
+		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT}
+
+$(NAME_B)	: ${OBJS_B}
+		$(MAKE) -C ${LIBDIR} all
+		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT}
 
 ${OBJSDIR}/%.o	: %.c
 		@mkdir -p $(dir $@)
@@ -62,20 +59,20 @@ ${OBJSDIR_B}/%.o	: %.c
 		${CC} ${CFLAGS} -c $< -o $@
 
 clean	:
-#		$(MAKE) -C ${LIBDIR} clean
+		$(MAKE) -C ${LIBDIR} clean
 		$(RM) $(OBJSDIR) $(OBJSDIR_B)
 
 fclean	:
-#		$(MAKE) -C ${LIBDIR} fclean
+		$(MAKE) -C ${LIBDIR} fclean
 		$(RM) $(OBJSDIR) $(NAME) $(OBJSDIR_B) $(NAME_B)
 
 re		:
-#		$(MAKE) -C ${LIBDIR} re
+		$(MAKE) -C ${LIBDIR} re
 		$(RM) $(OBJSDIR) $(NAME)
 		$(MAKE) all
 
 reb		:
-#		$(MAKE) -C ${LIBDIR} re
+		$(MAKE) -C ${LIBDIR} re
 		$(RM) $(OBJSDIR_B) $(NAME_B)
 		$(MAKE) bonus
 

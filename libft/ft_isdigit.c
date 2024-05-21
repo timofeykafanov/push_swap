@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 18:34:21 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/21 08:36:45 by tkafanov         ###   ########.fr       */
+/*   Created: 2024/04/03 09:19:21 by tkafanov          #+#    #+#             */
+/*   Updated: 2024/05/21 09:13:25 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+int	ft_isdigit(int c)
 {
-	(void)argv;
-	(void)argc;
-	return (0);
+	return (c >= '0' && c <= '9');
 }

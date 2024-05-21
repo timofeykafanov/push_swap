@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 18:34:21 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/21 08:36:45 by tkafanov         ###   ########.fr       */
+/*   Created: 2024/04/03 09:22:33 by tkafanov          #+#    #+#             */
+/*   Updated: 2024/05/21 09:16:37 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	(void)argv;
-	(void)argc;
-	return (0);
+	char	*match;
+
+	match = 0;
+	while (*s)
+	{
+		if (*s == (char)c)
+			match = (char *)s;
+		s++;
+	}
+	if (*s == (char)c)
+		match = (char *)s;
+	return (match);
 }

@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 18:34:21 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/21 08:36:45 by tkafanov         ###   ########.fr       */
+/*   Created: 2024/04/03 09:20:28 by tkafanov          #+#    #+#             */
+/*   Updated: 2024/05/21 09:14:24 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memset(void *ptr, int value, size_t num)
 {
-	(void)argv;
-	(void)argc;
-	return (0);
+	size_t			i;
+	unsigned char	*p;
+
+	p = ptr;
+	i = 0;
+	while (i < num)
+	{
+		p[i] = (unsigned char)value;
+		i++;
+	}
+	return (ptr);
 }
