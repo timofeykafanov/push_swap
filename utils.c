@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 18:52:23 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/21 09:52:12 by tkafanov         ###   ########.fr       */
+/*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
+/*   Updated: 2024/05/21 10:59:04 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-void	push(t_tlist **dst, t_tlist **src)
+void	ft_sort(int *main, int *sec, int len)
 {
-	t_tlist	*tmp;
+	int	i;
+	int	tmp;
 
-	if (!(*src))
-		return ;
-	tmp = *src;
-	*src = (*src)->next;
-	tmp->next = *dst;
-	*dst = tmp;
+	i = 0;
+	while (i < len - 1)
+	{
+		if (main[i] > main[i + 1])
+		{
+			tmp = main[i];
+			main[i] = main[i + 1];
+			main[i + 1] = tmp;
+			tmp = sec[i];
+			sec[i] = sec[i + 1];
+			sec[i + 1] = tmp;
+			i = 0;
+		}
+		else
+			i++;
+	}
 }

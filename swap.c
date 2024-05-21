@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:52:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/20 18:20:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/21 09:52:25 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_list **stack)
+void	swap(t_tlist **stack)
 {
-	t_list	*tmp;
+	t_tlist	*tmp;
 
 	if (!(*stack) || !(*stack)->next)
 		return ;

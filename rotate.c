@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:52:37 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/20 18:10:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/21 09:52:20 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_up(t_list **stack)
+void	rotate_up(t_tlist **stack)
 {
-	t_list	*first;
-	t_list	*last;
+	t_tlist	*first;
+	t_tlist	*last;
 
 	if (!(*stack) || !(*stack)->next)
 		return ;
@@ -28,10 +28,10 @@ void	rotate_up(t_list **stack)
 	first->next = NULL;
 }
 
-void	rotate_down(t_list **stack)
+void	rotate_down(t_tlist **stack)
 {
-	t_list	*last;
-	t_list	*sec_last;
+	t_tlist	*last;
+	t_tlist	*sec_last;
 
 	if (!(*stack) || !(*stack)->next)
 		return ;

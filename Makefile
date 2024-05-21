@@ -14,7 +14,8 @@ SRCS		= \
 			push_swap.c \
 			swap.c \
 			push.c \
-			rotate.c
+			rotate.c \
+			utils.c
 
 SRCS_B		= \
 			checker.c \

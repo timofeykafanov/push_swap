@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/20 18:10:27 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/21 10:43:54 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,21 @@
 # define SUCCESS 0
 # define ERROR 1
 
-typedef struct s_list
+typedef struct s_slist
 {
 	int				content;
 	int				a;
 	int				b;
 	int				i;
-	struct s_list	*next;
-	struct s_list	*prev;
-}	t_list;
+	struct s_slist	*next;
+	struct s_slist	*prev;
+}	t_tlist;
 
-void	swap(t_list **stack);
-void	push(t_list **dst, t_list **src);
-void	rotate_up(t_list **stack);
-void	rotate_down(t_list **stack);
+void	swap(t_tlist **stack);
+void	push(t_tlist **dst, t_tlist **src);
+void	rotate_up(t_tlist **stack);
+void	rotate_down(t_tlist **stack);
+void	sort(int *main, int *sec);
+void	ft_sort(int *main, int *sec, int len);
 
 #endif // PUSH_SWAP_H
