@@ -6,48 +6,46 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/21 11:04:29 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/22 17:14:59 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "libft/libft.h"
 #include <stdio.h>
+
+// void	push_swap()
+// {
+
+// }
 
 int	main(int argc, char **argv)
 {
-	int	*numbers;
-	int	*sorted_indexes;
-	int	*indexes;
-	int	i;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	int		*indexes;
+	int		i;
 
-	numbers = ft_calloc(argc - 1, sizeof(int));
-	if (!numbers)
-		return (ERROR);
-	indexes = ft_calloc(argc - 1, sizeof(int));
+	indexes = convert_to_indexes(argc - 1, argv);
 	if (!indexes)
-		return (free(numbers), ERROR);
-	sorted_indexes = ft_calloc(argc - 1, sizeof(int));
-	if (!sorted_indexes)
-		return (free(numbers), free(indexes), ERROR);
-	i = 0;
-	while (i < argc - 1)
-	{
-		numbers[i] = ft_atoi(argv[i + 1]);
-		sorted_indexes[i] = i;
-		indexes[i] = i;
-		i++;
-	}
-	ft_sort(numbers, sorted_indexes, argc - 1);
-	ft_sort(sorted_indexes, indexes, argc - 1);
-	i = 0;
-	while (i < argc - 1)
-	{
-		printf("%d = %d\n", numbers[i], indexes[i]);
-		i++;
-	}
-	free(numbers);
+		return (ERROR);
+	stack_a = arr_to_list(indexes, argc - 1);
+	if (!stack_a)
+		return (free(indexes), ERROR);
 	free(indexes);
-	free(sorted_indexes);
+	i = 0;
+	while (i++ < argc -1)
+	{
+		printf("%ld", (long)stack_a->content);
+		stack_a = stack_a->next;
+	}
+	stack_b = NULL;
+	printf("\n");
+	i = 0;
+	while (i++ < argc -1)
+	{
+		printf("%ld", (long)stack_a->content);
+		stack_a = stack_a->next;
+	}
+	free_list_circular(stack_a);
 	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/11 11:27:09 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/21 09:13:57 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/22 13:36:58 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(void *content)
 	if (!new)
 		return (NULL);
 	new->content = content;
-	new->next = 0;
+	new->next = NULL;
+	new->prev = NULL;
 	return (new);
 }
