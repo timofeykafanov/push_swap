@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/24 15:06:44 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/24 18:24:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,51 +16,62 @@
 static void	step_one(t_list *stack_a, t_list *stack_b, int len)
 {
 	t_int	ints;
+	int		counter = 0;
 	int		dir;
 
 	ints = init_ints(len);
 	dir = define_direction(stack_a, len, ints.start, ints.end);
-	printf("%ld\n", (long)stack_a->content);
+	printf("chunks = %d\nchunk_size = %d\nmiddle = %d\nstart = %d\nend = %d\ndir = %d\n", ints.chunks, ints.chunk_size, ints.middle, ints.start, ints.end, dir);
 	while (stack_a)
 	{
-		printf("%ld, ", (long)stack_a->content);
 		if ((long)stack_a->content >= ints.start
 			&& (long)stack_a->content <= ints.end)
 		{
-			if ((long)stack_a->content < ints.middle)
-			{
-				push(&stack_a, &stack_b);
-				rotate_up(&stack_b);
-			}
 			push(&stack_a, &stack_b);
+			counter++;
+			if ((long)stack_b->content < ints.middle)
+			{
+				rotate_up(&stack_b);
+				counter++;
+			}
 		}
-		if (define_direction(stack_a, len, ints.start, ints.end) == 1)
+		else if (define_direction(stack_a, len, ints.start, ints.end) == 1)
+		{
 			rotate_up(&stack_a);
+			counter++;
+		}
 		else if (define_direction(stack_a, len, ints.start, ints.end) == 0)
+		{
 			rotate_down(&stack_a);
+			counter++;
+		}
 		else
 		{
 			ints.start = ints.start - ints.chunk_size;
 			ints.end = ints.end + ints.chunk_size;
 		}
 	}
-	printf("chunks = %d\nchunk_size = %d\nmiddle = %d\nstart = %d\nend = %d\ndir = %d\n", ints.chunks, ints.chunk_size, ints.middle, ints.start, ints.end, dir);
-	(void)stack_b;
-	(void)stack_a;
+	int i = 0;
+	while (i++ < len)
+	{
+		printf("%ld, ", (long)stack_b->content);
+		stack_b = stack_b->next;
+	}
+	printf("counter = %d\n", counter);
 }
 
 void	push_swap(t_list *stack_a, int len)
 {
 	t_list	*stack_b;
-	int		i;
+	// int		i;
 
 	stack_b = NULL;
-	i = 0;
-	while (i++ < len)
-	{
-		printf("%ld, ", (long)stack_a->content);
-		stack_a = stack_a->next;
-	}
+	// i = 0;
+	// while (i++ < len)
+	// {
+	// 	printf("%ld, ", (long)stack_a->content);
+	// 	stack_a = stack_a->next;
+	// }
 	printf("\n");
 	step_one(stack_a, stack_b, len);
 }
