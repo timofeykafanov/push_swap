@@ -4,20 +4,23 @@
 
 CC			= cc
 RM			= rm -rf
-CFLAGS		= -Wall -Wextra -Werror -MD -MP -g
+CFLAGS		= -Wall -Wextra -Werror -MD -MP -g -I $(INCLUDES)
 MAKEFLAGS	= -j$(nproc) --no-print-directory
 
 NAME		= push_swap
 NAME_B		= checker_bonus
 
+SRCS_DIR	= srcs
+INCLUDES	= includes
+
 SRCS		= \
-			push_swap.c \
-			swap.c \
-			push.c \
-			rotate.c \
-			utils.c \
-			define_direction.c \
-			init.c
+			$(SRCS_DIR)/push_swap.c \
+			$(SRCS_DIR)/swap.c \
+			$(SRCS_DIR)/push.c \
+			$(SRCS_DIR)/rotate.c \
+			$(SRCS_DIR)/utils.c \
+			$(SRCS_DIR)/define_direction.c \
+			$(SRCS_DIR)/init.c
 
 SRCS_B		= \
 			checker.c \
