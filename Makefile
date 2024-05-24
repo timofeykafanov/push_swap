@@ -10,17 +10,17 @@ MAKEFLAGS	= -j$(nproc) --no-print-directory
 NAME		= push_swap
 NAME_B		= checker_bonus
 
-SRCS_DIR	= srcs
+SRCSDIR	= srcs
 INCLUDES	= includes
 
 SRCS		= \
-			$(SRCS_DIR)/push_swap.c \
-			$(SRCS_DIR)/swap.c \
-			$(SRCS_DIR)/push.c \
-			$(SRCS_DIR)/rotate.c \
-			$(SRCS_DIR)/utils.c \
-			$(SRCS_DIR)/define_direction.c \
-			$(SRCS_DIR)/init.c
+			$(SRCSDIR)/push_swap.c \
+			$(SRCSDIR)/swap.c \
+			$(SRCSDIR)/push.c \
+			$(SRCSDIR)/rotate.c \
+			$(SRCSDIR)/utils.c \
+			$(SRCSDIR)/define_direction.c \
+			$(SRCSDIR)/init.c
 
 SRCS_B		= \
 			checker.c \

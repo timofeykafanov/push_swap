@@ -3,7 +3,7 @@
 ################################################################################
 
 CC 		= cc
-RM		= rm -f
+RM		= rm -rf
 AR		= ar rcs
 CFLAGS	= -Wall -Wextra -Werror -g
 
@@ -19,7 +19,10 @@ SRCS	= ft_atoi.c ft_isdigit.c ft_memmove.c ft_split.c ft_strlcpy.c \
 		ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c \
 		ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
-OBJS	= $(SRCS:.c=.o)
+OBJSDIR	= objs
+
+OBJS	= $(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
+DEPS	= $(addprefix $(OBJSDIR)/, $(SRCS:.c=.d))
 
 ################################################################################
 ######                               RULES                                ######
@@ -30,15 +33,20 @@ all		: $(NAME)
 $(NAME)	: $(OBJS)
 		$(AR) $(NAME) $^
 
-%.o		: %.c libft.h
+$(OBJSDIR)/%.o		: %.c libft.h
+		@mkdir -p $(dir $@)
 		$(CC) $(CFLAGS) -c $< -o $@
 
 clean	:
-		$(RM) $(OBJS)
+		$(RM) $(OBJSDIR)
 
-fclean	: clean
-		$(RM) $(NAME)
+fclean	:
+		$(RM) $(NAME) $(OBJSDIR)
 
-re		: fclean all
+re		:
+		$(RM) $(OBJSDIR) $(NAME)
+		$(MAKE) all
+
+-include $(DEPS)
 
 .PHONY	: all clean fclean re
