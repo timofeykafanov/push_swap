@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/26 17:53:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/26 18:55:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,17 @@ static void	step_one(t_list **stack_a, t_list **stack_b, int len)
 			ints.start = ints.start - ints.chunk_size;
 			ints.end = ints.end + ints.chunk_size;
 		}
+	}
+}
+
+void	step_two(t_list **stack_a, t_list **stack_b)
+{
+	int	down;
+
+	down = 0;
+	while ((*stack_b) || down)
+	{
+		
 	}
 }
 
