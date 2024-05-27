@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 18:33:41 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/24 17:23:44 by codespace        ###   ########.fr       */
+/*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
+/*   Updated: 2024/05/27 08:54:56 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

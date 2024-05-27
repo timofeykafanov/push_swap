@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 18:34:21 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/26 18:55:15 by codespace        ###   ########.fr       */
+/*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
+/*   Updated: 2024/05/27 08:55:53 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 #include <stdio.h>
 
 static void	step_one(t_list **stack_a, t_list **stack_b, int len)
@@ -41,16 +41,16 @@ static void	step_one(t_list **stack_a, t_list **stack_b, int len)
 	}
 }
 
-void	step_two(t_list **stack_a, t_list **stack_b)
-{
-	int	down;
+// void	step_two(t_list **stack_a, t_list **stack_b)
+// {
+// 	int	down;
 
-	down = 0;
-	while ((*stack_b) || down)
-	{
-		
-	}
-}
+// 	down = 0;
+// 	while ((*stack_b) || down)
+// 	{
+
+// 	}
+// }
 
 void	push_swap(t_list **stack_a, int len)
 {

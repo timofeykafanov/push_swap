@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/19 18:52:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/05/22 11:04:22 by tkafanov         ###   ########.fr       */
+/*   Created: 2024/05/19 18:52:10 by tkafanov          #+#    #+#             */
+/*   Updated: 2024/05/27 08:56:22 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 void	swap(t_list **stack)
 {

@@ -6,11 +6,11 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:46:57 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/24 11:35:11 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/27 08:56:48 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 static int	from_start(t_list *stack, int len, int start, int end)
 {
