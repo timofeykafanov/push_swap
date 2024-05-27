@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/27 08:56:37 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/27 09:59:17 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	free_list_circular(t_list *list)
 	free(tmp);
 }
 
-static void	free_list(t_list *list)
+void	free_list(t_list *list)
 {
 	t_list	*tmp;
 

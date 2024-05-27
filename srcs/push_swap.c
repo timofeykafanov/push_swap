@@ -6,39 +6,50 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/27 08:55:53 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:01:24 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-static void	step_one(t_list **stack_a, t_list **stack_b, int len)
+static t_list	*step_one(t_list **a, t_list **b, int len)
 {
 	t_int	ints;
+	t_list	*oper;
 
+	oper = NULL;
 	ints = init_ints(len);
-	while ((*stack_a))
+	while ((*a))
 	{
-		if ((long)(*stack_a)->content >= ints.start
-			&& (long)(*stack_a)->content <= ints.end)
+		if ((long)(*a)->content >= ints.start
+			&& (long)(*a)->content <= ints.end)
 		{
-			push(stack_a, stack_b);
-			if ((long)(*stack_b)->content < ints.middle)
+			oper = push(a, b, oper, PB);
+			printf("pb\n");
+			if ((long)(*b)->content < ints.middle)
 			{
-				rotate_up(stack_b);
+				oper = rotate_up(b, oper, RB);
+				printf("rb\n");
 			}
 		}
-		else if (define_direction((*stack_a), len, ints.start, ints.end) == 1)
-			rotate_up(stack_a);
-		else if (define_direction((*stack_a), len, ints.start, ints.end) == 0)
-			rotate_down(stack_a);
+		else if (define_direction((*a), len, ints.start, ints.end) == 1)
+		{
+			oper = rotate_up(a, oper, RA);
+			printf("ra\n");
+		}
+		else if (define_direction((*a), len, ints.start, ints.end) == 0)
+		{
+			oper = rotate_down(a, oper, RRA);
+			printf("rra\n");
+		}
 		else
 		{
 			ints.start = ints.start - ints.chunk_size;
 			ints.end = ints.end + ints.chunk_size;
 		}
 	}
+	return (oper);
 }
 
 // void	step_two(t_list **stack_a, t_list **stack_b)
@@ -55,16 +66,28 @@ static void	step_one(t_list **stack_a, t_list **stack_b, int len)
 void	push_swap(t_list **stack_a, int len)
 {
 	t_list	*stack_b;
-	int		i;
+	t_list	*oper;
+	t_list	*tmp_oper;
 
 	stack_b = NULL;
-	step_one(stack_a, &stack_b, len);
-	i = 0;
-	while (i++ < len)
-	{
-		printf("%ld, ", (long)stack_b->content);
-		stack_b = stack_b->next;
-	}
+	oper = step_one(stack_a, &stack_b, len);
+	if (!oper)
+		return (free_list(oper));
+	// int	i = 0;
+	// while (i++ < len)
+	// {
+	// 	printf("%ld, ", (long)stack_b->content);
+	// 	stack_b = stack_b->next;
+	// }
+	//printf("pb\n");
+	tmp_oper = oper;
+	// while (tmp_oper)
+	// {
+	// 	printf("%s\n", (char *)tmp_oper->content);
+	// 	tmp_oper = tmp_oper->next;
+	// }
+	free_list(oper);
+	free_list_circular(stack_b);
 }
 
 int	main(int argc, char **argv)

@@ -6,28 +6,34 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:52:23 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/27 08:56:11 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/27 18:06:10 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void	push(t_list **dst, t_list **src)
-// {
-// 	t_list	*tmp;
+t_list	*put_operation(t_list *oper, char *s)
+{
+	t_list	*new_op;
 
-// 	if (!(*src))
-// 		return ;
-// 	tmp = *src;
-// 	*src = (*src)->next;
-// 	tmp->next = *dst;
-// 	*dst = tmp;
-// }
+	new_op = ft_lstnew((void *)s);
+	if (!new_op)
+		return (NULL);
+	if (!oper)
+		oper = new_op;
+	else
+		ft_lstadd_back(&oper, new_op);
+	return (oper);
+}
 
-void	push(t_list **src, t_list **dst)
+t_list	*push(t_list **src, t_list **dst, t_list *oper, char *s)
 {
 	t_list	*tmp;
+	t_list	*res;
 
+	res = put_operation(oper, s);
+	if (!res)
+		return (NULL);
 	tmp = *src;
 	if ((*src)->next == *src)
 		*src = NULL;
@@ -50,4 +56,5 @@ void	push(t_list **src, t_list **dst)
 		tmp->prev = tmp;
 	}
 	*dst = tmp;
+	return (res);
 }

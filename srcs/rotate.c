@@ -6,22 +6,30 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:52:37 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/27 08:56:19 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/27 10:13:10 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	rotate_up(t_list **stack)
+t_list	*rotate_up(t_list **stack, t_list *oper, char *s)
 {
+	t_list	*res;
+
 	if (!(*stack) || !(*stack)->next || (*stack)->next == *stack)
-		return ;
+		return (NULL);
+	res = put_operation(oper, s);
 	*stack = (*stack)->next;
+	return (res);
 }
 
-void	rotate_down(t_list **stack)
+t_list	*rotate_down(t_list **stack, t_list *oper, char *s)
 {
+	t_list	*res;
+
 	if (!(*stack) || !(*stack)->next || (*stack)->next == *stack)
-		return ;
+		return (NULL);
+	res = put_operation(oper, s);
 	*stack = (*stack)->prev;
+	return (res);
 }
