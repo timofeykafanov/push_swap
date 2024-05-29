@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:50:09 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/29 13:15:30 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:54:54 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,6 @@ t_int	init_ints(int len)
 	ints.middle = len / 2;
 	ints.start = ints.middle - ints.chunk_size;
 	ints.end = ints.middle + ints.chunk_size;
+	ints.len = len;
 	return (ints);
 }

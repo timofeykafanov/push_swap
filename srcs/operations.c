@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void	handle_p(t_stacks stacks, t_list **oper, t_list **l_oper, t_int ints)
+void	handle_pb(t_stacks stacks, t_list **oper, t_list **l_oper, t_int ints)
 {
 	t_list	*new_op;
 

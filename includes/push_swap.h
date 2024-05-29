@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/29 13:15:26 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/29 14:54:38 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_int
 	int	middle;
 	int	start;
 	int	end;
+	int	len;
 }	t_int;
 
 typedef struct s_stacks
@@ -54,7 +55,7 @@ void	push(t_list **src, t_list **dst);
 void	handle_r(t_list **a, t_list **oper, t_list **last_oper, char *op_name);
 void	free_list(t_list *list);
 void	rotate_up(t_list **stack);
-void	handle_p(t_stacks stacks, t_list **oper, t_list **l_oper, t_int ints);
+void	handle_pb(t_stacks stacks, t_list **oper, t_list **l_oper, t_int ints);
 void	rotate_down(t_list **stack);
 void	free_list_circular(t_list *list);
 
