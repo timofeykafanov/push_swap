@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/27 18:01:24 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:03:32 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,34 +15,25 @@
 
 static t_list	*step_one(t_list **a, t_list **b, int len)
 {
-	t_int	ints;
-	t_list	*oper;
+	t_int		ints;
+	t_list		*last_oper;
+	t_list		*oper;
+	t_stacks	stacks;
 
+	stacks.a = a;
+	stacks.b = b;
 	oper = NULL;
+	last_oper = NULL;
 	ints = init_ints(len);
 	while ((*a))
 	{
 		if ((long)(*a)->content >= ints.start
 			&& (long)(*a)->content <= ints.end)
-		{
-			oper = push(a, b, oper, PB);
-			printf("pb\n");
-			if ((long)(*b)->content < ints.middle)
-			{
-				oper = rotate_up(b, oper, RB);
-				printf("rb\n");
-			}
-		}
+			handle_p(stacks, &oper, &last_oper, ints);
 		else if (define_direction((*a), len, ints.start, ints.end) == 1)
-		{
-			oper = rotate_up(a, oper, RA);
-			printf("ra\n");
-		}
+			handle_r(a, &oper, &last_oper, RA);
 		else if (define_direction((*a), len, ints.start, ints.end) == 0)
-		{
-			oper = rotate_down(a, oper, RRA);
-			printf("rra\n");
-		}
+			handle_r(a, &oper, &last_oper, RRA);
 		else
 		{
 			ints.start = ints.start - ints.chunk_size;
@@ -79,13 +70,12 @@ void	push_swap(t_list **stack_a, int len)
 	// 	printf("%ld, ", (long)stack_b->content);
 	// 	stack_b = stack_b->next;
 	// }
-	//printf("pb\n");
 	tmp_oper = oper;
-	// while (tmp_oper)
-	// {
-	// 	printf("%s\n", (char *)tmp_oper->content);
-	// 	tmp_oper = tmp_oper->next;
-	// }
+	while (tmp_oper)
+	{
+		printf("%s\n", (char *)tmp_oper->content);
+		tmp_oper = tmp_oper->next;
+	}
 	free_list(oper);
 	free_list_circular(stack_b);
 }

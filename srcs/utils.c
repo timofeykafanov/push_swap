@@ -6,11 +6,21 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/27 09:59:17 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:12:42 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+t_list	*put_operation(char *s)
+{
+	t_list	*new_op;
+
+	new_op = ft_lstnew((void *)s);
+	if (!new_op)
+		return (NULL);
+	return (new_op);
+}
 
 static void	ft_sort_both(int *main, int *sec, int len)
 {
@@ -62,36 +72,6 @@ int	*convert_to_indexes(int len, char **argv)
 	ft_sort_both(numbers, sorted_indexes, len);
 	ft_sort_both(sorted_indexes, indexes, len);
 	return (free(numbers), free(sorted_indexes), indexes);
-}
-
-void	free_list_circular(t_list *list)
-{
-	t_list	*tmp;
-	t_list	*first;
-
-	first = list;
-	list = list->next;
-	while (list != first)
-	{
-		tmp = list;
-		list = list->next;
-		free(tmp);
-	}
-	tmp = list;
-	list = list->next;
-	free(tmp);
-}
-
-void	free_list(t_list *list)
-{
-	t_list	*tmp;
-
-	while (list)
-	{
-		tmp = list;
-		list = list->next;
-		free(tmp);
-	}
 }
 
 t_list	*arr_to_list(int *indexes, int len)

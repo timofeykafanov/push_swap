@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/27 10:12:25 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:00:42 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,27 @@ typedef struct s_int
 	int	end;
 }	t_int;
 
+typedef struct s_stacks
+{
+	t_list	**a;
+	t_list	**b;
+}	t_stacks;
+
 int		define_direction(t_list *stack, int len, int start, int end);
 int		*convert_to_indexes(int len, char **argv);
+
 void	swap(t_list **stack);
+void	push(t_list **src, t_list **dst);
+void	handle_r(t_list **a, t_list **oper, t_list **last_oper, char *op_name);
 void	free_list(t_list *list);
+void	rotate_up(t_list **stack);
+void	handle_p(t_stacks stacks, t_list **oper, t_list **l_oper, t_int ints);
+void	rotate_down(t_list **stack);
 void	free_list_circular(t_list *list);
+
 t_int	init_ints(int len);
-t_list	*push(t_list **src, t_list **dst, t_list *oper, char *s);
-t_list	*rotate_up(t_list **stack, t_list *oper, char *s);
 t_list	*init_list(int len, char **argv);
-t_list	*rotate_down(t_list **stack, t_list *oper, char *s);
 t_list	*arr_to_list(int *indexes, int len);
-t_list	*put_operation(t_list *oper, char *s);
+t_list	*put_operation(char *s);
 
 #endif // PUSH_SWAP_H

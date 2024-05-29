@@ -20,7 +20,9 @@ SRCS		= \
 			$(SRCSDIR)/rotate.c \
 			$(SRCSDIR)/utils.c \
 			$(SRCSDIR)/define_direction.c \
-			$(SRCSDIR)/init.c
+			$(SRCSDIR)/init.c \
+			$(SRCSDIR)/operations.c \
+			$(SRCSDIR)/free.c
 
 SRCS_B		= \
 			checker.c \
