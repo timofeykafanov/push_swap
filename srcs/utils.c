@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/29 13:12:42 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:15:05 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,31 +72,4 @@ int	*convert_to_indexes(int len, char **argv)
 	ft_sort_both(numbers, sorted_indexes, len);
 	ft_sort_both(sorted_indexes, indexes, len);
 	return (free(numbers), free(sorted_indexes), indexes);
-}
-
-t_list	*arr_to_list(int *indexes, int len)
-{
-	int		i;
-	t_list	*res;
-	t_list	*ptr_res;
-
-	if (!len)
-		return (NULL);
-	res = ft_lstnew((void *)(long)indexes[0]);
-	if (!res)
-		return (NULL);
-	i = 1;
-	ptr_res = res;
-	while (i < len)
-	{
-		ptr_res->next = ft_lstnew((void *)(long)indexes[i]);
-		if (!ptr_res->next)
-			return (free_list(res), NULL);
-		ptr_res->next->prev = ptr_res;
-		ptr_res = ptr_res->next;
-		i++;
-	}
-	ptr_res->next = res;
-	res->prev = ptr_res;
-	return (res);
 }

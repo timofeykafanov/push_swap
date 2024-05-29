@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/29 13:00:42 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:15:26 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	free_list_circular(t_list *list);
 
 t_int	init_ints(int len);
 t_list	*init_list(int len, char **argv);
-t_list	*arr_to_list(int *indexes, int len);
 t_list	*put_operation(char *s);
 
 #endif // PUSH_SWAP_H

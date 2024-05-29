@@ -6,11 +6,38 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:50:09 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/27 10:54:38 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/29 13:15:30 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static t_list	*arr_to_list(int *indexes, int len)
+{
+	int		i;
+	t_list	*res;
+	t_list	*ptr_res;
+
+	if (!len)
+		return (NULL);
+	res = ft_lstnew((void *)(long)indexes[0]);
+	if (!res)
+		return (NULL);
+	i = 1;
+	ptr_res = res;
+	while (i < len)
+	{
+		ptr_res->next = ft_lstnew((void *)(long)indexes[i]);
+		if (!ptr_res->next)
+			return (free_list(res), NULL);
+		ptr_res->next->prev = ptr_res;
+		ptr_res = ptr_res->next;
+		i++;
+	}
+	ptr_res->next = res;
+	res->prev = ptr_res;
+	return (res);
+}
 
 t_list	*init_list(int len, char **argv)
 {
