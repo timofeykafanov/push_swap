@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/29 14:54:38 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:33:29 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		*convert_to_indexes(int len, char **argv);
 
 void	swap(t_list **stack);
 void	push(t_list **src, t_list **dst);
+void	optimize(t_list **oper);
 void	handle_r(t_list **a, t_list **oper, t_list **last_oper, char *op_name);
 void	free_list(t_list *list);
 void	rotate_up(t_list **stack);

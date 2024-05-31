@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/29 15:37:53 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/05/31 13:40:57 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,24 @@ static t_list	*step_one(t_stacks stacks, t_int i, t_list **last_oper)
 // 	push(stacks.b, stacks.a);
 // 	new_op = put_operation(PB);
 // 	if (!new_op)
-// 		return (bottom);
+// 		return (-1);
 // 	if (!(*oper))
 // 		*oper = new_op;
 // 	else
 // 		(*l_oper)->next = new_op;
 // 	*l_oper = new_op;
 // 	if (bottom)
+// 	{
+// 		while ((*stacks.a)->prev->content + 1 == (*stacks.a)->content && bottom)
+// 		{
+// 			rotate_down(stacks.a);
+// 			bottom--;
+// 		}
+// 	}
 // 	return (bottom);
 // }
 
-// void	step_two(t_stacks stacks, t_list **oper, t_list **l_oper)
+// int	step_two(t_stacks stacks, t_list **oper, t_list **l_oper)
 // {
 // 	int	bottom;
 
@@ -59,9 +66,15 @@ static t_list	*step_one(t_stacks stacks, t_int i, t_list **last_oper)
 // 	while ((*stacks.b) || bottom)
 // 	{
 // 		if (!(*stacks.a) || (*stacks.b)->content == (*stacks.a)->content - 1)
+// 		{
 // 			bottom = handle_pa(stacks, bottom, oper, l_oper);
+// 			if (bottom == -1)
+// 				return (ERROR);
+// 		}
 // 	}
+// 	return (SUCCESS);
 // }
+
 
 void	push_swap(t_list **stack_a, t_int ints)
 {
@@ -71,20 +84,22 @@ void	push_swap(t_list **stack_a, t_int ints)
 	t_list		*last_oper;
 	t_list		*tmp_oper;
 
+	stack_b = NULL;
 	stacks.a = stack_a;
 	stacks.b = &stack_b;
-	stack_b = NULL;
 	last_oper = NULL;
 	oper = step_one(stacks, ints, &last_oper);
 	if (!oper)
 		return (free_list(oper));
-	// step_two(stacks, &oper, &last_oper);
+	// if (!step_two(stacks, &oper, &last_oper))
+	// 	return (free_list(oper));
 	// int	i = 0;
 	// while (i++ < len)
 	// {
 	// 	printf("%ld, ", (long)stack_b->content);
 	// 	stack_b = stack_b->next;
 	// }
+	optimize(&oper);
 	tmp_oper = oper;
 	while (tmp_oper)
 	{

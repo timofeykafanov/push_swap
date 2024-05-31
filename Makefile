@@ -22,7 +22,8 @@ SRCS		= \
 			$(SRCSDIR)/define_direction.c \
 			$(SRCSDIR)/init.c \
 			$(SRCSDIR)/operations.c \
-			$(SRCSDIR)/free.c
+			$(SRCSDIR)/free.c \
+			$(SRCSDIR)/optimize.c
 
 SRCS_B		= \
 			checker.c \
@@ -114,7 +115,7 @@ wait	:
 	@sleep 0.2
 	@echo -n "\r 99%  [\033[0;31m██████████████████████████\033[m]"
 	@sleep 1
-	@echo -n "\r 100% [\033[0;32m██████████████████████████\033[m]\033[0;32m compilation terminee ✓\n\033[0;m"
+	@echo -n "\r 100% [\033[0;32m██████████████████████████\033[m]\033[0;32m compilation finished ✓\n\033[0;m"
 
 -include $(DEPS)
 
