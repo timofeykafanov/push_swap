@@ -10,7 +10,7 @@ MAKEFLAGS	= -j$(nproc) --no-print-directory
 NAME		= push_swap
 NAME_B		= checker_bonus
 
-SRCSDIR	= srcs
+SRCSDIR		= srcs
 INCLUDES	= includes
 
 SRCS		= \
@@ -85,45 +85,33 @@ reb		:
 		$(RM) $(OBJSDIR_B) $(NAME_B)
 		$(MAKE) bonus
 
-run		:
-		$(MAKE) re
-		./$(NAME)
-
-brun	:
-		$(MAKE) reb
-		./$(NAME_B)
-
-test	:
-		$(MAKE) re
-		valgrind --track-fds=yes --leak-check=full --show-leak-kinds=all ./$(NAME)
-
 wait:
 	@echo -n "\r  5%  [\033[0;31m█\033[m.........................]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 10%  [\033[0;31m███\033[m.......................]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 15%  [\033[0;31m████\033[m......................]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 20%  [\033[0;31m██████\033[m....................]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 27%  [\033[0;31m████████\033[m..................]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 32%  [\033[0;31m██████████\033[m................]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 35%  [\033[0;31m███████████\033[m...............]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 45%  [\033[0;31m█████████████\033[m.............]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 50%  [\033[0;31m███████████████\033[m...........]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 65%  [\033[0;31m██████████████████\033[m........]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 80%  [\033[0;31m█████████████████████\033[m.....]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 90%  [\033[0;31m████████████████████████\033[m..]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 95%  [\033[0;31m█████████████████████████\033[m.]"
-	@sleep 0.1
+	@sleep 0.2
 	@echo -n "\r 99%  [\033[0;31m██████████████████████████\033[m]"
 	@sleep 1
 	@echo -n "\r 100% [\033[0;32m██████████████████████████\033[m]\033[0;32m compilation terminee ✓\n\033[0;m"
