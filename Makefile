@@ -85,7 +85,7 @@ reb		:
 		$(RM) $(OBJSDIR_B) $(NAME_B)
 		$(MAKE) bonus
 
-wait:
+wait	:
 	@echo -n "\r  5%  [\033[0;31m█\033[m.........................]"
 	@sleep 0.2
 	@echo -n "\r 10%  [\033[0;31m███\033[m.......................]"
@@ -118,4 +118,4 @@ wait:
 
 -include $(DEPS)
 
-.PHONY: all clean fclean bonus re test run bonus reb brun
+.PHONY	: all clean fclean re bonus reb
