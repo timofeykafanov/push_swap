@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/31 13:40:57 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/03 21:35:20 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static t_list	*step_one(t_stacks stacks, t_int i, t_list **last_oper)
 {
 	t_list	*oper;
+
 	oper = NULL;
 	while ((*stacks.a))
 	{
@@ -23,9 +24,9 @@ static t_list	*step_one(t_stacks stacks, t_int i, t_list **last_oper)
 			&& (long)(*stacks.a)->content <= i.end)
 			handle_pb(stacks, &oper, last_oper, i);
 		else if (define_direction((*stacks.a), i.len, i.start, i.end) == 1)
-			handle_r(stacks.a, &oper, last_oper, RA);
+			handle_r(stacks, &oper, last_oper, RA);
 		else if (define_direction((*stacks.a), i.len, i.start, i.end) == 0)
-			handle_r(stacks.a, &oper, last_oper, RRA);
+			handle_r(stacks, &oper, last_oper, RRA);
 		else
 		{
 			i.start = i.start - i.chunk_size;
@@ -35,46 +36,32 @@ static t_list	*step_one(t_stacks stacks, t_int i, t_list **last_oper)
 	return (oper);
 }
 
-// int	handle_pa(t_stacks stacks, int bottom, t_list **oper, t_list **l_oper)
-// {
-// 	t_list	*new_op;
-// 	push(stacks.b, stacks.a);
-// 	new_op = put_operation(PB);
-// 	if (!new_op)
-// 		return (-1);
-// 	if (!(*oper))
-// 		*oper = new_op;
-// 	else
-// 		(*l_oper)->next = new_op;
-// 	*l_oper = new_op;
-// 	if (bottom)
-// 	{
-// 		while ((*stacks.a)->prev->content + 1 == (*stacks.a)->content && bottom)
-// 		{
-// 			rotate_down(stacks.a);
-// 			bottom--;
-// 		}
-// 	}
-// 	return (bottom);
-// }
+int	step_two(t_stacks s, t_list **oper, t_list **l_oper, t_int ints)
+{
+	int	bottom;
+	int	dir;
 
-// int	step_two(t_stacks stacks, t_list **oper, t_list **l_oper)
-// {
-// 	int	bottom;
-
-// 	bottom = 0;
-// 	while ((*stacks.b) || bottom)
-// 	{
-// 		if (!(*stacks.a) || (*stacks.b)->content == (*stacks.a)->content - 1)
-// 		{
-// 			bottom = handle_pa(stacks, bottom, oper, l_oper);
-// 			if (bottom == -1)
-// 				return (ERROR);
-// 		}
-// 	}
-// 	return (SUCCESS);
-// }
-
+	while ((long)(*s.b)->content != ints.len - 1)
+		handle_r(s, oper, l_oper, RB);
+	bottom = 0;
+	while ((*s.b) || bottom)
+	{
+		if (!(*s.a) || (*s.b)->content == (*s.a)->content - 1)
+			bottom = handle_pa_top(s, bottom, oper, l_oper);
+		else if ((*s.b)->content > (*s.a)->prev->content || !bottom)
+			bottom = handle_pa_bottom(s, bottom, oper, l_oper);
+		else
+		{
+			dir = define_direction((*s.b), ints.len, \
+				(long)(*s.a)->prev->content + 1, (long)(*s.a)->content - 1);
+			if (dir == 1)
+				handle_r(s, oper, l_oper, RB);
+			else if (dir == 0)
+				handle_r(s, oper, l_oper, RRB);
+		}
+	}
+	return (SUCCESS);
+}
 
 void	push_swap(t_list **stack_a, t_int ints)
 {
@@ -82,7 +69,7 @@ void	push_swap(t_list **stack_a, t_int ints)
 	t_list		*stack_b;
 	t_list		*oper;
 	t_list		*last_oper;
-	t_list		*tmp_oper;
+	t_list		*tmp;
 
 	stack_b = NULL;
 	stacks.a = stack_a;
@@ -91,23 +78,16 @@ void	push_swap(t_list **stack_a, t_int ints)
 	oper = step_one(stacks, ints, &last_oper);
 	if (!oper)
 		return (free_list(oper));
-	// if (!step_two(stacks, &oper, &last_oper))
-	// 	return (free_list(oper));
-	// int	i = 0;
-	// while (i++ < len)
-	// {
-	// 	printf("%ld, ", (long)stack_b->content);
-	// 	stack_b = stack_b->next;
-	// }
+	step_two(stacks, &oper, &last_oper, ints);
 	optimize(&oper);
-	tmp_oper = oper;
-	while (tmp_oper)
+	tmp = oper;
+	while (tmp)
 	{
-		printf("%s\n", (char *)tmp_oper->content);
-		tmp_oper = tmp_oper->next;
+		write(1, (char *)tmp->content, ft_strlen((char *)tmp->content));
+		tmp = tmp->next;
 	}
 	free_list(oper);
-	free_list_circular(stack_b);
+	free_list_c(stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -120,6 +100,6 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		return (ERROR);
 	push_swap(&stack_a, ints);
-	// free_list_circular(stack_a);
+	free_list_c(stack_a);
 	return (SUCCESS);
 }

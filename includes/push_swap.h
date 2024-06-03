@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/31 13:33:29 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/03 21:33:38 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,17 @@
 # define SUCCESS 0
 # define ERROR 1
 
-# define SA "sa"
-# define SB "sb"
-# define SS "ss"
-# define PA "pa"
-# define PB "pb"
-# define RA "ra"
-# define RB "rb"
-# define RR "rr"
-# define RRA "rra"
-# define RRB "rrb"
-# define RRR "rrr"
+# define SA "sa\n"
+# define SB "sb\n"
+# define SS "ss\n"
+# define PA "pa\n"
+# define PB "pb\n"
+# define RA "ra\n"
+# define RB "rb\n"
+# define RR "rr\n"
+# define RRA "rra\n"
+# define RRB "rrb\n"
+# define RRR "rrr\n"
 
 typedef struct s_int
 {
@@ -48,17 +48,19 @@ typedef struct s_stacks
 }	t_stacks;
 
 int		define_direction(t_list *stack, int len, int start, int end);
+int		handle_pa_top(t_stacks stacks, int bottom, t_list **oper, t_list **l);
+int		handle_pa_bottom(t_stacks s, int bottom, t_list **oper, t_list **l);
 int		*convert_to_indexes(int len, char **argv);
 
 void	swap(t_list **stack);
 void	push(t_list **src, t_list **dst);
 void	optimize(t_list **oper);
-void	handle_r(t_list **a, t_list **oper, t_list **last_oper, char *op_name);
+void	handle_r(t_stacks s, t_list **oper, t_list **last_oper, char *op_name);
 void	free_list(t_list *list);
 void	rotate_up(t_list **stack);
 void	handle_pb(t_stacks stacks, t_list **oper, t_list **l_oper, t_int ints);
 void	rotate_down(t_list **stack);
-void	free_list_circular(t_list *list);
+void	free_list_c(t_list *list);
 
 t_int	init_ints(int len);
 t_list	*init_list(int len, char **argv);

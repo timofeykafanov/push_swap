@@ -3,20 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 13:11:58 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/29 13:12:24 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/03 21:30:36 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	free_list_circular(t_list *list)
+void	free_list_c(t_list *list)
 {
 	t_list	*tmp;
 	t_list	*first;
 
+	if (!list)
+		return ;
 	first = list;
 	list = list->next;
 	while (list != first)
