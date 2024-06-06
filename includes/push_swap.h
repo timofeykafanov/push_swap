@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 12:53:34 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:42:58 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define DUP_ERROR "Error! Duplicates detected in arguments!\n"
 # define NON_NUM_ERROR "Error! Non numeric argument detected!\n"
 # define NON_INT_ERROR "Error! Non int argument detected!\n"
+# define ERROR_MESSAGE "Error\n"
 
 typedef struct s_int
 {

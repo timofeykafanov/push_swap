@@ -8,7 +8,7 @@ CFLAGS		= -Wall -Wextra -Werror -MD -MP -g -I $(INCLUDES)
 MAKEFLAGS	= -j$(nproc) --no-print-directory
 
 NAME		= push_swap
-NAME_B		= checker_bonus
+NAME_B		= checker
 
 SRCSDIR		= srcs
 INCLUDES	= includes
@@ -28,7 +28,14 @@ SRCS		= \
 			$(SRCSDIR)/sort_small.c
 
 SRCS_B		= \
-			checker.c \
+			$(SRCSDIR)/checker_bonus.c \
+			$(SRCSDIR)/init.c \
+			$(SRCSDIR)/free.c \
+			$(SRCSDIR)/checks.c \
+			$(SRCSDIR)/utils.c \
+			$(SRCSDIR)/swap.c \
+			$(SRCSDIR)/push.c \
+			$(SRCSDIR)/rotate.c \
 
 OBJSDIR		= objs
 OBJS		= $(addprefix $(OBJSDIR)/, $(SRCS:.c=.o))
