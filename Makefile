@@ -24,7 +24,8 @@ SRCS		= \
 			$(SRCSDIR)/operations.c \
 			$(SRCSDIR)/free.c \
 			$(SRCSDIR)/optimize.c \
-			$(SRCSDIR)/checks.c
+			$(SRCSDIR)/checks.c \
+			$(SRCSDIR)/sort_small.c
 
 SRCS_B		= \
 			checker.c \
