@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:52:10 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/27 08:56:22 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:18:21 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 void	swap(t_list **stack)
 {
-	t_list	*tmp;
+	t_list	*first;
+	t_list	*second;
 
-	if (!(*stack) || !(*stack)->next)
-		return ;
-	tmp = *stack;
-	*stack = tmp->next;
-	tmp->next = (*stack)->next;
-	(*stack)->next = tmp;
+	first = *stack;
+	second = first->next;
+	first->next = second->next;
+	second->next->prev = first;
+	second->next = first;
+	second->prev = first->prev;
+	first->prev->next = second;
+	first->prev = second;
+	*stack = second;
 }

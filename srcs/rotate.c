@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:52:37 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/28 12:08:43 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:18:34 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 
 void	rotate_up(t_list **stack)
 {
-	if (!(*stack) || !(*stack)->next || (*stack)->next == *stack)
-		return ;
 	*stack = (*stack)->next;
 }
 
 void	rotate_down(t_list **stack)
 {
-	if (!(*stack) || !(*stack)->next || (*stack)->next == *stack)
-		return ;
 	*stack = (*stack)->prev;
 }

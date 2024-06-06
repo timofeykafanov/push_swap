@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 09:18:53 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:22:18 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,35 @@ void	push_swap(t_list **stack_a, t_int ints)
 	free_list_c(stack_b);
 }
 
+void	sort_three(t_list **stack)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = (long)(*stack)->content;
+	b = (long)(*stack)->next->content;
+	c = (long)(*stack)->prev->content;
+	if (c > a && a > b)
+		(swap(stack), write(1, SA, 3));
+	else if (a > b && b > c)
+	{
+		(swap(stack), write(1, SA, 3), rotate_down(stack), write(1, RRA, 4));
+	}
+	else if (a > c && c > b)
+		(rotate_up(stack), write(1, RA, 3));
+	else if (b > c && c > a)
+		(swap(stack), write(1, SA, 3), rotate_up(stack), write(1, RA, 3));
+	else if (b > a && a > c)
+		(rotate_down(stack), write(1, RRA, 4));
+}
+
+void	push_swap_hardcoded(t_list **stack_a, int len)
+{
+	if (len == 3)
+		sort_three(stack_a);
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
@@ -99,7 +128,10 @@ int	main(int argc, char **argv)
 	stack_a = init_list(ints.len, argv);
 	if (!stack_a)
 		return (ERROR);
-	push_swap(&stack_a, ints);
+	if (ints.len <= 5)
+		push_swap_hardcoded(&stack_a, ints.len);
+	else
+		push_swap(&stack_a, ints);
 	free_list_c(stack_a);
 	return (SUCCESS);
 }
