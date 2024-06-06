@@ -85,12 +85,12 @@ fclean	:
 		$(RM) $(OBJSDIR) $(NAME) $(OBJSDIR_B) $(NAME_B)
 
 re		:
-		$(MAKE) -C ${LIBDIR} re
+		$(MAKE) -C ${LIBDIR} fclean
 		$(RM) $(OBJSDIR) $(NAME)
 		$(MAKE) all
 
 reb		:
-		$(MAKE) -C ${LIBDIR} re
+		$(MAKE) -C ${LIBDIR} fclean
 		$(RM) $(OBJSDIR_B) $(NAME_B)
 		$(MAKE) bonus
 

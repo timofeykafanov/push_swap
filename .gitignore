@@ -53,5 +53,5 @@ dkms.conf
 
 push_swap
 objs*
-checker_bonus
+checker
 objs_bonus*
