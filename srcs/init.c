@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:50:09 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/05/29 14:54:54 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 07:23:24 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,13 @@ t_int	init_ints(int len)
 {
 	t_int	ints;
 
-	if (len <= 10)
+	if (len == 2)
+		ints.chunks = 2;
+	else if (len == 3)
+		ints.chunks = 3;
+	else if (len == 4)
+		ints.chunks = 4;
+	else if (len <= 10)
 		ints.chunks = 5;
 	else if (len <= 150)
 		ints.chunks = 8;
