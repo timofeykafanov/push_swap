@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:50:09 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 11:21:04 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:52:26 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_list	*init_list(int len, char **argv)
 	int		*indexes;
 
 	if (!are_numeric(argv, len))
-		return (write(1, NON_NUM_ERROR, 38), NULL);
+		return (write(1, ERROR_MESSAGE, 6), NULL);
 	indexes = convert_to_indexes(len, argv);
 	if (!indexes)
 		return (NULL);

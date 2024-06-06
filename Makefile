@@ -63,7 +63,6 @@ bonus	: $(NAME_B)
 $(NAME)	: ${OBJS}
 		$(MAKE) -C ${LIBDIR} all
 		$(CC) ${CFLAGS} -o $@ $^ -L. ${LIBFT}
-		@make wait
 
 $(NAME_B)	: ${OBJS_B}
 		$(MAKE) -C ${LIBDIR} all

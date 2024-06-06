@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:57:47 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 17:47:03 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 17:56:59 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static void	do_operation(char *op, t_list **stack_a, t_list **stack_b)
 
 int	is_valid(char *op)
 {
-	if (!ft_strncmp(op, SA, 3) || !ft_strncmp(op, SB, 3) ||
-		!ft_strncmp(op, SS, 3) || !ft_strncmp(op, PA, 3) ||
-		!ft_strncmp(op, PB, 3) || !ft_strncmp(op, RA, 3) ||
-		!ft_strncmp(op, RB, 3) || !ft_strncmp(op, RR, 3) ||
-		!ft_strncmp(op, RRA, 4) || !ft_strncmp(op, RRB, 4) ||
-		!ft_strncmp(op, RRR, 4))
+	if (!ft_strncmp(op, SA, 3) || !ft_strncmp(op, SB, 3)
+		|| !ft_strncmp(op, SS, 3) || !ft_strncmp(op, PA, 3)
+		|| !ft_strncmp(op, PB, 3) || !ft_strncmp(op, RA, 3)
+		|| !ft_strncmp(op, RB, 3) || !ft_strncmp(op, RR, 3)
+		|| !ft_strncmp(op, RRA, 4) || !ft_strncmp(op, RRB, 4)
+		|| !ft_strncmp(op, RRR, 4))
 		return (1);
 	return (0);
 }
@@ -70,7 +70,12 @@ static int	checker(t_list **stack_a)
 	while (operation)
 	{
 		if (!is_valid(operation))
-			return (write(1, ERROR_MESSAGE, 6), ERROR);
+		{
+			write(1, ERROR_MESSAGE, 6);
+			free_list_c(stack_b);
+			free(operation);
+			return (ERROR);
+		}
 		do_operation(operation, stack_a, &stack_b);
 		free(operation);
 		operation = get_next_line(0);
