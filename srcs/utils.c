@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 07:54:50 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 09:32:49 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,34 +45,6 @@ static void	ft_sort_both(int *main, int *sec, int len)
 	}
 }
 
-static int	is_sorted(int *arr, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len - 1)
-	{
-		if (i[arr] > i[arr + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-static int	has_duplicates(int *arr, int len)
-{
-	int	i;
-
-	i = 0;
-	while (i < len - 1)
-	{
-		if (i[arr] == i[arr + 1])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 int	*convert_to_indexes(int len, char **argv)
 {
 	int	*indexes;
@@ -102,7 +74,7 @@ int	*convert_to_indexes(int len, char **argv)
 	ft_sort_both(numbers, sorted_indexes, len);
 	if (has_duplicates(numbers, len))
 		return (free(numbers), free(sorted_indexes), free(indexes), \
-			write(1, DUP_ERROR, 40), NULL);
+			write(1, DUP_ERROR, 41), NULL);
 	ft_sort_both(sorted_indexes, indexes, len);
 	return (free(numbers), free(sorted_indexes), indexes);
 }

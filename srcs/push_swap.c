@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 07:18:48 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 09:18:53 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	step_two(t_stacks s, t_list **oper, t_list **l_oper, t_int ints)
 	while ((long)(*s.b)->content != ints.len - 1)
 		handle_r(s, oper, l_oper, RB);
 	bottom = 0;
-	while ((*s.b) || bottom)
+	while ((*s.b))
 	{
 		if (!(*s.a) || (*s.b)->content == (*s.a)->content - 1)
 			bottom = handle_pa_top(s, bottom, oper, l_oper);

@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 07:41:57 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 09:44:09 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,9 @@
 # define RRB "rrb\n"
 # define RRR "rrr\n"
 
-# define DUP_ERROR "Error! Duplicates detected in arguments!"
+# define DUP_ERROR "Error! Duplicates detected in arguments!\n"
+# define NON_NUM_ERROR "Error! Non numeric argument detected!\n"
+// # define NON_INT_ERROR "Error! Non int argument detected!\n"
 
 typedef struct s_int
 {
@@ -49,8 +51,11 @@ typedef struct s_stacks
 	t_list	**b;
 }	t_stacks;
 
-int		define_direction(t_list *stack, int len, int start, int end);
+int		is_sorted(int *arr, int len);
+int		are_numeric(char **argv, int len);
 int		handle_pa_top(t_stacks stacks, int bottom, t_list **oper, t_list **l);
+int		has_duplicates(int *arr, int len);
+int		define_direction(t_list *stack, int len, int start, int end);
 int		handle_pa_bottom(t_stacks s, int bottom, t_list **oper, t_list **l);
 int		*convert_to_indexes(int len, char **argv);
 

@@ -23,7 +23,8 @@ SRCS		= \
 			$(SRCSDIR)/init.c \
 			$(SRCSDIR)/operations.c \
 			$(SRCSDIR)/free.c \
-			$(SRCSDIR)/optimize.c
+			$(SRCSDIR)/optimize.c \
+			$(SRCSDIR)/checks.c
 
 SRCS_B		= \
 			checker.c \
