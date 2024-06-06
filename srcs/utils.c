@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 09:32:49 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:18:07 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,9 @@ int	*convert_to_indexes(int len, char **argv)
 		indexes[i] = i;
 		i++;
 	}
+	if (!has_ints(argv, len, numbers))
+		return (free(numbers), free(sorted_indexes), free(indexes), \
+			write(1, NON_INT_ERROR, 34), NULL);
 	if (is_sorted(numbers, len))
 		return (free(numbers), free(sorted_indexes), free(indexes), NULL);
 	ft_sort_both(numbers, sorted_indexes, len);

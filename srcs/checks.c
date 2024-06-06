@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 09:32:52 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 09:46:08 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:19:33 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,33 @@ int	has_duplicates(int *arr, int len)
 		i++;
 	}
 	return (0);
+}
+
+static int	intlen(int n)
+{
+	int	len;
+
+	len = 0;
+	if (n <= 0)
+		len++;
+	while (n)
+	{
+		n = n / 10;
+		len++;
+	}
+	return (len);
+}
+
+int	has_ints(char **argv, int len, int *numbers)
+{
+	int	i;
+
+	i = 1;
+	while (i <= len)
+	{
+		if ((int)ft_strlen(argv[i]) != intlen(numbers[i - 1]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

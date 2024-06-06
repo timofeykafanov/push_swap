@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 09:44:09 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:13:15 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 
 # define DUP_ERROR "Error! Duplicates detected in arguments!\n"
 # define NON_NUM_ERROR "Error! Non numeric argument detected!\n"
-// # define NON_INT_ERROR "Error! Non int argument detected!\n"
+# define NON_INT_ERROR "Error! Non int argument detected!\n"
 
 typedef struct s_int
 {
@@ -51,6 +51,7 @@ typedef struct s_stacks
 	t_list	**b;
 }	t_stacks;
 
+int		has_ints(char **argv, int len, int *numbers);
 int		is_sorted(int *arr, int len);
 int		are_numeric(char **argv, int len);
 int		handle_pa_top(t_stacks stacks, int bottom, t_list **oper, t_list **l);
