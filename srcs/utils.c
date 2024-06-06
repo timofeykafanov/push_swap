@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 10:18:07 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 13:20:57 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,20 @@ static void	ft_sort_both(int *main, int *sec, int len)
 	}
 }
 
+static int	alloc(int **indexes, int **numbers, int **sorted_indexes, int len)
+{
+	*numbers = ft_calloc(len, sizeof(int));
+	if (!(*numbers))
+		return (0);
+	*indexes = ft_calloc(len, sizeof(int));
+	if (!(*indexes))
+		return (free(*numbers), 0);
+	*sorted_indexes = ft_calloc(len, sizeof(int));
+	if (!(*sorted_indexes))
+		return (free(*numbers), free(*indexes), 0);
+	return (1);
+}
+
 int	*convert_to_indexes(int len, char **argv)
 {
 	int	*indexes;
@@ -52,22 +66,14 @@ int	*convert_to_indexes(int len, char **argv)
 	int	*sorted_indexes;
 	int	i;
 
-	numbers = ft_calloc(len, sizeof(int));
-	if (!numbers)
+	if (!alloc(&indexes, &numbers, &sorted_indexes, len))
 		return (NULL);
-	indexes = ft_calloc(len, sizeof(int));
-	if (!indexes)
-		return (free(numbers), NULL);
-	sorted_indexes = ft_calloc(len, sizeof(int));
-	if (!sorted_indexes)
-		return (free(numbers), free(indexes), NULL);
 	i = 0;
-	while (i < len)
+	while (i++ < len)
 	{
-		numbers[i] = ft_atoi(argv[i + 1]);
-		sorted_indexes[i] = i;
-		indexes[i] = i;
-		i++;
+		numbers[i - 1] = ft_atoi(argv[i]);
+		sorted_indexes[i - 1] = i - 1;
+		indexes[i - 1] = i - 1;
 	}
 	if (!has_ints(argv, len, numbers))
 		return (free(numbers), free(sorted_indexes), free(indexes), \
