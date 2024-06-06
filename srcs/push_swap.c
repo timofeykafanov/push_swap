@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 12:28:37 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 12:40:27 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,12 +117,31 @@ void	sort_three(t_list **stack)
 		(rotate_down(stack), write(1, RRA, 4));
 }
 
+void	sort_four(t_list **stack_a)
+{
+	t_list	*stack_b;
+
+	stack_b = NULL;
+	while ((long)(*stack_a)->content != 0)
+	{
+		if (define_direction((*stack_a), 4, 0, 0) == 1)
+			(rotate_up(stack_a), write(1, RA, 3));
+		else if (define_direction((*stack_a), 4, 0, 0) == 0)
+			(rotate_down(stack_a), write(1, RRA, 4));
+	}
+	(push(stack_a, &stack_b), write(1, PB, 3));
+	sort_three(stack_a);
+	(push(&stack_b, stack_a), write(1, PA, 3));
+}
+
 void	push_swap_hardcoded(t_list **stack_a, int len)
 {
 	if (len == 2)
 		sort_two(stack_a);
 	else if (len == 3)
 		sort_three(stack_a);
+	else if (len == 4)
+		sort_four(stack_a);
 }
 
 int	main(int argc, char **argv)
