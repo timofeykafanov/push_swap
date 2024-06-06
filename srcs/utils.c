@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 17:52:38 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:16:22 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,31 +59,31 @@ static int	alloc(int **indexes, int **numbers, int **sorted_indexes, int len)
 	return (1);
 }
 
-int	*convert_to_indexes(int len, char **argv)
+int	*convert_to_indexes(int len, char **argv, t_arrs ar)
 {
-	int	*indexes;
-	int	*numbers;
-	int	*sorted_indexes;
 	int	i;
 
-	if (!alloc(&indexes, &numbers, &sorted_indexes, len))
+	if (!alloc(&ar.indexes, &ar.numbers, &ar.s_indexes, len))
 		return (NULL);
 	i = 0;
 	while (i++ < len)
 	{
-		numbers[i - 1] = ft_atoi(argv[i]);
-		sorted_indexes[i - 1] = i - 1;
-		indexes[i - 1] = i - 1;
+		ar.numbers[i - 1] = ft_atoi(argv[i]);
+		(free(NULL), ar.s_indexes[i - 1] = i - 1, ar.indexes[i - 1] = i - 1);
 	}
-	if (!has_ints(argv, len, numbers))
-		return (free(numbers), free(sorted_indexes), free(indexes), \
+	if (!has_ints(argv, len, ar.numbers))
+		return (free(ar.numbers), free(ar.s_indexes), free(ar.indexes), \
 			write(1, ERROR_MESSAGE, 6), NULL);
-	if (is_sorted(numbers, len))
-		return (free(numbers), free(sorted_indexes), free(indexes), NULL);
-	ft_sort_both(numbers, sorted_indexes, len);
-	if (has_duplicates(numbers, len))
-		return (free(numbers), free(sorted_indexes), free(indexes), \
+	if (is_sorted(ar.numbers, len))
+	{
+		if (has_duplicates(ar.numbers, len))
+			write(1, ERROR_MESSAGE, 6);
+		return (free(ar.numbers), free(ar.s_indexes), free(ar.indexes), NULL);
+	}
+	ft_sort_both(ar.numbers, ar.s_indexes, len);
+	if (has_duplicates(ar.numbers, len))
+		return (free(ar.numbers), free(ar.s_indexes), free(ar.indexes), \
 			write(1, ERROR_MESSAGE, 6), NULL);
-	ft_sort_both(sorted_indexes, indexes, len);
-	return (free(numbers), free(sorted_indexes), indexes);
+	ft_sort_both(ar.s_indexes, ar.indexes, len);
+	return (free(ar.numbers), free(ar.s_indexes), ar.indexes);
 }

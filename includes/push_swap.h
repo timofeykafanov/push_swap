@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 17:50:09 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:15:07 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,13 @@ typedef struct s_stacks
 	t_list	**b;
 }	t_stacks;
 
+typedef struct s_arrs
+{
+	int	*indexes;
+	int	*numbers;
+	int	*s_indexes;
+}	t_arrs;
+
 int		has_ints(char **argv, int len, int *numbers);
 int		is_sorted(int *arr, int len);
 int		are_numeric(char **argv, int len);
@@ -56,7 +63,7 @@ int		handle_pa_top(t_stacks stacks, int bottom, t_list **oper, t_list **l);
 int		has_duplicates(int *arr, int len);
 int		define_direction(t_list *stack, int len, int start, int end);
 int		handle_pa_bottom(t_stacks s, int bottom, t_list **oper, t_list **l);
-int		*convert_to_indexes(int len, char **argv);
+int		*convert_to_indexes(int len, char **argv, t_arrs arrs);
 
 void	swap(t_list **stack);
 void	push(t_list **src, t_list **dst);
