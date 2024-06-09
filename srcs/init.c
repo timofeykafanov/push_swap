@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:50:09 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 19:16:48 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/09 19:53:44 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_list	*arr_to_list(int *indexes, int len)
 	return (res);
 }
 
-t_list	*init_list(int len, char **argv)
+t_list	*init_list(int len, char **nums)
 {
 	t_list	*stack_a;
 	t_arrs	arrs;
@@ -51,9 +51,9 @@ t_list	*init_list(int len, char **argv)
 	arrs.indexes = indexes;
 	arrs.numbers = numbers;
 	arrs.s_indexes = s_indexes;
-	if (!are_numeric(argv, len))
+	if (!are_numeric(nums, len))
 		return (write(1, ERROR_MESSAGE, 6), NULL);
-	indexes = convert_to_indexes(len, argv, arrs);
+	indexes = convert_to_indexes(len, nums, arrs);
 	if (!indexes)
 		return (NULL);
 	stack_a = arr_to_list(indexes, len);

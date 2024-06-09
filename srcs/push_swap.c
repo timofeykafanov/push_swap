@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 12:51:29 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/09 20:14:29 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,11 +106,23 @@ int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
 	t_int	ints;
+	int		len;
+	char	**nums;
 
-	ints = init_ints(argc - 1);
-	stack_a = init_list(ints.len, argv);
-	if (!stack_a)
+	if (argc == 2)
+	{
+		len = count_words(argv[1], ' ');
+		nums = ft_split(argv[1], ' ');
+	}
+	else
+		(free(NULL), len = argc - 1, nums = take_args(argc, argv));
+	if (!nums)
 		return (ERROR);
+	ints = init_ints(len);
+	stack_a = init_list(ints.len, nums);
+	if (!stack_a)
+		return (free_arr(nums, len), ERROR);
+	free_arr(nums, len);
 	if (ints.len <= 5)
 		push_swap_hardcoded(&stack_a, ints.len);
 	else

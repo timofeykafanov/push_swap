@@ -6,24 +6,25 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 09:32:52 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 10:19:33 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/09 19:39:29 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	are_numeric(char **argv, int len)
+int	are_numeric(char **nums, int len)
 {
 	int	i;
 	int	j;
 
-	i = 1;
-	while (i <= len)
+	(void)len;
+	i = 0;
+	while (i < len)
 	{
 		j = 0;
-		while (argv[i][j])
+		while (nums[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-')
+			if (!ft_isdigit(nums[i][j]) && nums[i][j] != '-')
 				return (0);
 			j++;
 		}
@@ -75,14 +76,15 @@ static int	intlen(int n)
 	return (len);
 }
 
-int	has_ints(char **argv, int len, int *numbers)
+int	has_ints(char **nums, int len, int *numbers)
 {
 	int	i;
 
-	i = 1;
-	while (i <= len)
+	i = 0;
+	(void)len;
+	while (i < len)
 	{
-		if ((int)ft_strlen(argv[i]) != intlen(numbers[i - 1]))
+		if ((int)ft_strlen(nums[i]) != intlen(numbers[i]))
 			return (0);
 		i++;
 	}

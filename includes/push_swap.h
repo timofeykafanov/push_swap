@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 19:15:07 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/09 19:40:10 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,19 @@ typedef struct s_arrs
 	int	*s_indexes;
 }	t_arrs;
 
-int		has_ints(char **argv, int len, int *numbers);
+int		has_ints(char **nums, int len, int *numbers);
 int		is_sorted(int *arr, int len);
-int		are_numeric(char **argv, int len);
+int		are_numeric(char **nums, int len);
 int		handle_pa_top(t_stacks stacks, int bottom, t_list **oper, t_list **l);
 int		has_duplicates(int *arr, int len);
 int		define_direction(t_list *stack, int len, int start, int end);
 int		handle_pa_bottom(t_stacks s, int bottom, t_list **oper, t_list **l);
-int		*convert_to_indexes(int len, char **argv, t_arrs arrs);
+int		*convert_to_indexes(int len, char **nums, t_arrs arrs);
 
 void	swap(t_list **stack);
 void	push(t_list **src, t_list **dst);
 void	optimize(t_list **oper);
+void	free_arr(char **arr, int len);
 void	handle_r(t_stacks s, t_list **oper, t_list **last_oper, char *op_name);
 void	sort_two(t_list **stack);
 void	free_list(t_list *list);
@@ -79,8 +80,10 @@ void	sort_three(t_list **stack);
 void	rotate_down(t_list **stack);
 void	free_list_c(t_list *list);
 
+char	**take_args(int argc, char **argv);
+
 t_int	init_ints(int len);
-t_list	*init_list(int len, char **argv);
+t_list	*init_list(int len, char **nums);
 t_list	*put_operation(char *s);
 
 #endif // PUSH_SWAP_H

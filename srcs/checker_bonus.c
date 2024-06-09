@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:57:47 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 17:56:59 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/09 19:52:01 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,14 +90,27 @@ static int	checker(t_list **stack_a)
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
+	int		len;
+	char	**nums;
 
-	if (argc == 1)
+	if (argc == 2)
 	{
-		return (ERROR);
+		len = count_words(argv[1], ' ');
+		nums = ft_split(argv[1], ' ');
+		if (!nums)
+			return (ERROR);
 	}
-	stack_a = init_list(argc - 1, argv);
+	else
+	{
+		len = argc - 1;
+		nums = take_args(argc, argv);
+		if (!nums)
+			return (ERROR);
+	}
+	stack_a = init_list(len, nums);
 	if (!stack_a)
-		return (ERROR);
+		return (free_arr(nums, len), ERROR);
+	free_arr(nums, len);
 	checker(&stack_a);
 	free_list_c(stack_a);
 	return (SUCCESS);

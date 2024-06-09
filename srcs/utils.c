@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 19:16:22 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/09 20:12:58 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,19 @@ static int	alloc(int **indexes, int **numbers, int **sorted_indexes, int len)
 	return (1);
 }
 
-int	*convert_to_indexes(int len, char **argv, t_arrs ar)
+int	*convert_to_indexes(int len, char **nums, t_arrs ar)
 {
 	int	i;
 
 	if (!alloc(&ar.indexes, &ar.numbers, &ar.s_indexes, len))
 		return (NULL);
-	i = 0;
-	while (i++ < len)
+	i = -1;
+	while (i++ < len - 1)
 	{
-		ar.numbers[i - 1] = ft_atoi(argv[i]);
-		(free(NULL), ar.s_indexes[i - 1] = i - 1, ar.indexes[i - 1] = i - 1);
+		ar.numbers[i] = ft_atoi(nums[i]);
+		(free(NULL), ar.s_indexes[i] = i, ar.indexes[i] = i);
 	}
-	if (!has_ints(argv, len, ar.numbers))
+	if (!has_ints(nums, len, ar.numbers))
 		return (free(ar.numbers), free(ar.s_indexes), free(ar.indexes), \
 			write(1, ERROR_MESSAGE, 6), NULL);
 	if (is_sorted(ar.numbers, len))
@@ -86,4 +86,28 @@ int	*convert_to_indexes(int len, char **argv, t_arrs ar)
 			write(1, ERROR_MESSAGE, 6), NULL);
 	ft_sort_both(ar.s_indexes, ar.indexes, len);
 	return (free(ar.numbers), free(ar.s_indexes), ar.indexes);
+}
+
+char	**take_args(int argc, char **argv)
+{
+	char	**nums;
+	int		i;
+
+	nums = (char **)malloc(sizeof(char *) * argc);
+	if (!nums)
+		return (NULL);
+	i = 1;
+	while (i < argc)
+	{
+		nums[i - 1] = ft_strdup(argv[i]);
+		if (!nums[i - 1])
+		{
+			while (i >= 0)
+				free(nums[i--]);
+			free(nums);
+			return (NULL);
+		}
+		i++;
+	}
+	return (nums);
 }

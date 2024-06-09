@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 12:58:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/06 16:28:48 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/07 09:05:00 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+int		count_words(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s);
 char	*ft_strchr(const char *s, int c);
