@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 10:09:27 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/09 20:12:58 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:24:30 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,33 +59,33 @@ static int	alloc(int **indexes, int **numbers, int **sorted_indexes, int len)
 	return (1);
 }
 
-int	*convert_to_indexes(int len, char **nums, t_arrs ar)
+int	*convert_to_indexes(int len, char **nums, t_arrs ar, int checker)
 {
 	int	i;
 
-	if (!alloc(&ar.indexes, &ar.numbers, &ar.s_indexes, len))
+	if (!alloc(&ar.i, &ar.n, &ar.s_i, len))
 		return (NULL);
 	i = -1;
 	while (i++ < len - 1)
-	{
-		ar.numbers[i] = ft_atoi(nums[i]);
-		(free(NULL), ar.s_indexes[i] = i, ar.indexes[i] = i);
-	}
-	if (!has_ints(nums, len, ar.numbers))
-		return (free(ar.numbers), free(ar.s_indexes), free(ar.indexes), \
+		(free(NULL), ar.n[i] = ft_atoi(nums[i]), ar.s_i[i] = i, ar.i[i] = i);
+	if (!has_ints(nums, len, ar.n))
+		return (free(ar.n), free(ar.s_i), free(ar.i), \
 			write(1, ERROR_MESSAGE, 6), NULL);
-	if (is_sorted(ar.numbers, len))
+	if (!checker)
 	{
-		if (has_duplicates(ar.numbers, len))
-			write(1, ERROR_MESSAGE, 6);
-		return (free(ar.numbers), free(ar.s_indexes), free(ar.indexes), NULL);
+		if (is_sorted(ar.n, len))
+		{
+			if (has_duplicates(ar.n, len))
+				write(1, ERROR_MESSAGE, 6);
+			return (free(ar.n), free(ar.s_i), free(ar.i), NULL);
+		}
 	}
-	ft_sort_both(ar.numbers, ar.s_indexes, len);
-	if (has_duplicates(ar.numbers, len))
-		return (free(ar.numbers), free(ar.s_indexes), free(ar.indexes), \
+	ft_sort_both(ar.n, ar.s_i, len);
+	if (has_duplicates(ar.n, len))
+		return (free(ar.n), free(ar.s_i), free(ar.i), \
 			write(1, ERROR_MESSAGE, 6), NULL);
-	ft_sort_both(ar.s_indexes, ar.indexes, len);
-	return (free(ar.numbers), free(ar.s_indexes), ar.indexes);
+	ft_sort_both(ar.s_i, ar.i, len);
+	return (free(ar.n), free(ar.s_i), ar.i);
 }
 
 char	**take_args(int argc, char **argv)

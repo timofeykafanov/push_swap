@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/09 19:40:10 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:13:00 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ typedef struct s_stacks
 
 typedef struct s_arrs
 {
-	int	*indexes;
-	int	*numbers;
-	int	*s_indexes;
+	int	*i;
+	int	*n;
+	int	*s_i;
 }	t_arrs;
 
 int		has_ints(char **nums, int len, int *numbers);
@@ -63,7 +63,7 @@ int		handle_pa_top(t_stacks stacks, int bottom, t_list **oper, t_list **l);
 int		has_duplicates(int *arr, int len);
 int		define_direction(t_list *stack, int len, int start, int end);
 int		handle_pa_bottom(t_stacks s, int bottom, t_list **oper, t_list **l);
-int		*convert_to_indexes(int len, char **nums, t_arrs arrs);
+int		*convert_to_indexes(int len, char **nums, t_arrs arrs, int checker);
 
 void	swap(t_list **stack);
 void	push(t_list **src, t_list **dst);
@@ -83,7 +83,7 @@ void	free_list_c(t_list *list);
 char	**take_args(int argc, char **argv);
 
 t_int	init_ints(int len);
-t_list	*init_list(int len, char **nums);
+t_list	*init_list(int len, char **nums, int checker);
 t_list	*put_operation(char *s);
 
 #endif // PUSH_SWAP_H

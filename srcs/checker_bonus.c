@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:57:47 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/09 19:52:01 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:08:56 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	main(int argc, char **argv)
 		if (!nums)
 			return (ERROR);
 	}
-	stack_a = init_list(len, nums);
+	stack_a = init_list(len, nums, 1);
 	if (!stack_a)
 		return (free_arr(nums, len), ERROR);
 	free_arr(nums, len);

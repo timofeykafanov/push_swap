@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:34:21 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/09 20:14:29 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:08:01 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	main(int argc, char **argv)
 	if (!nums)
 		return (ERROR);
 	ints = init_ints(len);
-	stack_a = init_list(ints.len, nums);
+	stack_a = init_list(ints.len, nums, 0);
 	if (!stack_a)
 		return (free_arr(nums, len), ERROR);
 	free_arr(nums, len);

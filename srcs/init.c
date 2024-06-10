@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tkafanov <tkafanov@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 12:50:09 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/09 19:53:44 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:13:20 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static t_list	*arr_to_list(int *indexes, int len)
 	return (res);
 }
 
-t_list	*init_list(int len, char **nums)
+t_list	*init_list(int len, char **nums, int checker)
 {
 	t_list	*stack_a;
 	t_arrs	arrs;
@@ -48,12 +48,12 @@ t_list	*init_list(int len, char **nums)
 	int		*s_indexes;
 
 	(free(NULL), indexes = NULL, numbers = NULL, s_indexes = NULL);
-	arrs.indexes = indexes;
-	arrs.numbers = numbers;
-	arrs.s_indexes = s_indexes;
+	arrs.i = indexes;
+	arrs.n = numbers;
+	arrs.s_i = s_indexes;
 	if (!are_numeric(nums, len))
 		return (write(1, ERROR_MESSAGE, 6), NULL);
-	indexes = convert_to_indexes(len, nums, arrs);
+	indexes = convert_to_indexes(len, nums, arrs, checker);
 	if (!indexes)
 		return (NULL);
 	stack_a = arr_to_list(indexes, len);
