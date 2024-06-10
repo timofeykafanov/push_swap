@@ -6,13 +6,11 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 13:57:47 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/10 09:08:56 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:32:22 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/checker_bonus.h"
-
-#include <stdio.h>
 
 static void	do_operation(char *op, t_list **stack_a, t_list **stack_b)
 {

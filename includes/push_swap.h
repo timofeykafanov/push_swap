@@ -6,7 +6,7 @@
 /*   By: tkafanov <tkafanov@student.42vienna.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 18:33:41 by tkafanov          #+#    #+#             */
-/*   Updated: 2024/06/10 09:13:00 by tkafanov         ###   ########.fr       */
+/*   Updated: 2024/06/10 09:33:26 by tkafanov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-# include <stdlib.h>
 
 # define SUCCESS 0
 # define ERROR 1
